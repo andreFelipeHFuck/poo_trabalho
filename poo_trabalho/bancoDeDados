@@ -1,0 +1,25 @@
+create sequence id_usuario;
+create sequence id_email;
+
+create table usuario(
+    id int,
+    nome varchar(50),
+    senha varchar(100),
+    primary key(id)
+);
+
+create table email(
+    id int,
+    titulo varchar(100),
+    data date,
+    hora TIME,
+    emailRespondido boolean,
+    id_emailRespondido int,
+    id_remetente int,
+    id_destinatario int,
+    primary key(id),
+    foreign key(id_emailRespondido) references email,
+    foreign key(id_remetente) references usuario,
+    foreign key(id_destinatario) references usuario
+);
+
